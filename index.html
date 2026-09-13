@@ -1,0 +1,465 @@
+<title>Webky Profesionál</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&family=Jost:wght@400;500;600;700&family=Roboto+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#FFFFFF;
+    --ink:#211F1D;
+    --ink-soft:#726C64;
+    --mustard:#DCE8F7;
+    --brick:#2151D1;
+    --line:#211F1D;
+    --surface:#FFFFFF;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:"Jost", ui-sans-serif, system-ui, sans-serif;
+    font-size:17px;
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3{
+    font-family:"Bodoni Moda", Georgia, serif;
+    font-style:italic;
+    text-transform:none;
+    font-weight:600;
+    line-height:1.02;
+    letter-spacing:0;
+    margin:0;
+    text-wrap:balance;
+    color:var(--ink);
+  }
+  p{margin:0;}
+  a{color:inherit;}
+  .wrap{max-width:1240px; margin:0 auto; padding:0 32px;}
+  .mono{
+    font-family:"Roboto Mono", ui-monospace, monospace;
+    font-size:12.5px;
+    letter-spacing:.1em;
+    text-transform:uppercase;
+  }
+  section{padding:110px 0;}
+
+  .btn{
+    font-family:"Roboto Mono", monospace;
+    font-size:13.5px;
+    letter-spacing:.05em;
+    text-transform:uppercase;
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    padding:16px 26px;
+    border:2px solid var(--ink);
+    cursor:pointer;
+    text-decoration:none;
+    color:var(--ink);
+    background:transparent;
+    white-space:nowrap;
+    transition:background .15s ease, color .15s ease;
+  }
+  .btn:focus-visible{outline:3px solid var(--brick); outline-offset:3px;}
+  .btn-fill{background:var(--ink); color:var(--paper);}
+  .btn-fill:hover{background:var(--brick); border-color:var(--brick); color:#fff;}
+  .btn:not(.btn-fill):hover{background:var(--ink); color:var(--paper);}
+  .link-arrow{
+    font-family:"Roboto Mono", monospace; font-size:13.5px; letter-spacing:.04em;
+    text-decoration:none; color:var(--ink); text-transform:uppercase;
+    display:inline-flex; align-items:center; gap:8px; border-bottom:2px solid var(--ink);
+    padding-bottom:2px; transition:color .15s ease, border-color .15s ease;
+  }
+  .link-arrow:hover{color:var(--ink); border-color:var(--brick);}
+
+  /* ---------- NAV ---------- */
+  header.nav{
+    position:sticky; top:0; z-index:50;
+    background:var(--paper);
+    border-bottom:3px solid var(--ink);
+  }
+  .nav-inner{display:flex; align-items:center; justify-content:space-between; padding:18px 32px;}
+  .brand{text-decoration:none; color:var(--ink); font-family:"Bodoni Moda",serif; font-style:italic; font-weight:600; font-size:23px; text-transform:none; letter-spacing:.01em;}
+  .brand span{color:var(--ink);}
+  .navlinks{display:flex; align-items:center; gap:34px;}
+  .navlinks a:not(.btn){font-size:14px; text-decoration:none; color:var(--ink); font-weight:600;}
+  .navlinks a:not(.btn):hover{color:var(--ink);}
+  @media (max-width:860px){ .navlinks a:not(.btn):not(.btn-fill){display:none;} }
+
+  /* ---------- HERO ---------- */
+  .hero{padding:70px 0 0; border-bottom:3px solid var(--ink);}
+  .hero-top{padding-bottom:56px;}
+  .hero h1{font-size:clamp(46px,7.4vw,108px);}
+  .hero-sub{margin-top:26px; max-width:52ch; font-size:19px; color:var(--ink-soft);}
+  .hero-ctas{display:flex; gap:16px; margin-top:36px; flex-wrap:wrap;}
+  .hero-strip{display:grid; grid-template-columns:repeat(3,1fr); border-top:3px solid var(--ink);}
+  .hero-thumb{
+    display:block; text-decoration:none; color:var(--ink); position:relative;
+    border-right:3px solid var(--ink);
+  }
+  .hero-thumb:last-child{border-right:none;}
+  .hero-thumb img{width:100%; height:260px; object-fit:cover; display:block;}
+  .hero-thumb .cap{
+    display:flex; justify-content:space-between; align-items:center;
+    padding:14px 18px; border-top:3px solid var(--ink); background:var(--surface);
+  }
+  .hero-thumb .cap b{font-family:"Bodoni Moda",serif; font-style:italic; font-size:19px; text-transform:none; font-weight:600;}
+  .hero-thumb .cap span{font-family:"Roboto Mono",monospace; font-size:11px; letter-spacing:.06em; color:var(--ink-soft); text-transform:uppercase;}
+  @media (max-width:820px){ .hero-strip{grid-template-columns:1fr;} .hero-thumb{border-right:none; border-bottom:3px solid var(--ink);} .hero-thumb:last-child{border-bottom:none;} }
+
+  /* ---------- SECTION HEAD ---------- */
+  .section-head{max-width:720px; margin-bottom:60px;}
+  .section-head .mono{color:var(--ink);}
+  .section-head h2{font-size:clamp(34px,5vw,60px); margin-top:12px;}
+  .section-head p{margin-top:18px; color:var(--ink-soft); font-size:17px; max-width:58ch;}
+
+  /* ---------- PORTFOLIO ---------- */
+  .work{border-bottom:3px solid var(--ink); padding-top:100px;}
+  .work-item{
+    display:grid; grid-template-columns:1fr 1fr; border-top:3px solid var(--ink);
+  }
+  .work-item:nth-child(odd) .work-media{order:2;}
+  .work-media{position:relative; overflow:hidden; min-height:420px;}
+  .work-media img{width:100%; height:100%; min-height:420px; object-fit:cover; display:block;}
+  .work-media .num{
+    position:absolute; top:0; left:0;
+    font-family:"Bodoni Moda",serif; font-style:italic; font-weight:700; font-size:120px;
+    color:var(--paper); background:var(--ink); line-height:1; padding:6px 22px 14px 18px;
+  }
+  .work-copy{padding:56px 60px; display:flex; flex-direction:column; justify-content:center; border-left:3px solid var(--ink);}
+  .work-item:nth-child(odd) .work-copy{border-left:none; border-right:3px solid var(--ink);}
+  .work-copy .loc{font-size:12px; color:var(--ink);}
+  .work-copy h3{font-size:clamp(30px,3.6vw,46px); margin-top:10px;}
+  .work-copy .badge{
+    display:inline-block; margin-top:16px; font-family:"Roboto Mono",monospace; font-size:11px;
+    letter-spacing:.08em; text-transform:uppercase; border:1.5px solid var(--ink); padding:5px 10px;
+  }
+  .work-copy .desc{margin-top:20px; color:var(--ink-soft); font-size:16px; max-width:44ch;}
+  .work-tags{display:flex; gap:8px; flex-wrap:wrap; margin-top:20px;}
+  .work-tags span{font-family:"Roboto Mono",monospace; font-size:11px; letter-spacing:.03em; border:1.5px solid var(--line); padding:5px 10px; color:var(--ink-soft);}
+  .work-copy .link-arrow{margin-top:26px; align-self:flex-start;}
+  @media (max-width:900px){
+    .work-item{grid-template-columns:1fr;}
+    .work-item:nth-child(odd) .work-media{order:0;}
+    .work-copy, .work-item:nth-child(odd) .work-copy{border:none; border-top:3px solid var(--ink); padding:40px 28px;}
+    .work-media .num{font-size:80px;}
+  }
+
+  /* ---------- CMS ---------- */
+  .cms{background:var(--paper); border-bottom:3px solid var(--ink);}
+  .cms-head{max-width:780px;}
+  .cms-head h2{font-size:clamp(32px,4.6vw,54px); margin-top:12px;}
+  .cms-head p{margin-top:18px; font-size:17px; max-width:58ch;}
+  .cms-steps{margin-top:64px; display:grid; grid-template-columns:repeat(3,1fr); gap:0; border-top:3px solid var(--ink); border-left:3px solid var(--ink);}
+  .cms-step{border-right:3px solid var(--ink); border-bottom:3px solid var(--ink); background:var(--surface);}
+  .cms-step .num{font-family:"Bodoni Moda",serif; font-style:italic; font-weight:700; font-size:40px; padding:18px 20px 0;}
+  .cms-step .label{font-family:"Roboto Mono",monospace; font-size:12px; letter-spacing:.06em; text-transform:uppercase; padding:6px 20px 18px; color:var(--ink-soft);}
+  .cms-step img{width:100%; aspect-ratio:16/10; object-fit:cover; object-position:top; display:block; border-top:3px solid var(--ink);}
+  @media (max-width:900px){ .cms-steps{grid-template-columns:1fr;} }
+
+  /* ---------- SERVICES ---------- */
+  .services{border-bottom:3px solid var(--ink);}
+  .services-grid{display:grid; grid-template-columns:1fr 1fr; border:3px solid var(--ink); border-bottom:none;}
+  .services-grid-3{grid-template-columns:1fr 1fr 1fr;}
+  .plan{padding:44px 40px; border-bottom:3px solid var(--ink); display:flex; flex-direction:column;}
+  .plan + .plan{border-left:3px solid var(--ink);}
+  .plan.filled{background:var(--ink); color:var(--paper);}
+  .plan .mono{color:var(--ink);}
+  .tier-name{font-size:22px; font-weight:700; letter-spacing:.06em;}
+  .tier-standard{
+    color:#b7b7b7;
+    background-image:linear-gradient(180deg,
+      #f7f7f7 0%, #cfcfcf 22%, #8a8a8a 45%, #eeeeee 58%,
+      #a8a8a8 72%, #dcdcdc 88%, #7c7c7c 100%);
+    -webkit-background-clip:text;
+    background-clip:text;
+    -webkit-text-fill-color:transparent;
+  }
+  .tier-exclusive{
+    color:#a97d1f;
+    background-image:linear-gradient(180deg,
+      #fdf3cf 0%, #e8c766 20%, #a97d1f 40%, #f7e6a3 55%,
+      #c99a2e 72%, #f3d98a 86%, #8a5f12 100%);
+    -webkit-background-clip:text;
+    background-clip:text;
+    -webkit-text-fill-color:transparent;
+  }
+  .plan.filled .mono{color:var(--paper);}
+  .plan.filled h3{color:var(--paper);}
+  .plan h3{font-size:32px; margin-top:12px;}
+  .plan h3 .eur{font-family:"Jost", sans-serif; font-style:normal; font-weight:600;}
+  .plan .price{font-family:"Roboto Mono",monospace; font-size:13px; margin-top:10px; text-transform:uppercase; letter-spacing:.05em; opacity:.75;}
+  .plan ul{list-style:none; margin:28px 0 0; padding:0; display:grid; gap:13px; flex:1;}
+  .plan li{font-size:15.5px; display:flex; gap:10px;}
+  .plan li::before{content:"+"; font-weight:700; color:var(--ink); flex:none;}
+  .plan.filled li::before{color:var(--paper);}
+  .plan .btn{margin-top:30px; align-self:flex-start;}
+  .plan.filled .btn{border-color:var(--paper); color:var(--paper);}
+  .plan.filled .btn:hover{background:var(--mustard); color:var(--ink); border-color:var(--mustard);}
+  .addon{
+    border:3px solid var(--ink); border-top:none; padding:24px 40px;
+    display:flex; justify-content:space-between; align-items:center; gap:20px; flex-wrap:wrap; background:var(--surface);
+  }
+  .addon b{font-family:"Bodoni Moda",serif; font-style:italic; font-weight:600; text-transform:none; font-size:21px;}
+  .addon span{color:var(--ink-soft); font-size:14.5px;}
+  @media (max-width:820px){ .services-grid{grid-template-columns:1fr;} .plan + .plan{border-left:none; border-top:3px solid var(--ink);} }
+
+  /* ---------- PROCESS ---------- */
+  .process{border-bottom:3px solid var(--ink);}
+  .timeline{position:relative; margin-top:70px; padding-top:6px;}
+  .timeline::before{content:""; position:absolute; top:6px; left:0; right:0; height:3px; background:var(--ink);}
+  .timeline-row{display:grid; grid-template-columns:repeat(4,1fr); gap:28px;}
+  .t-step{position:relative; padding-top:34px;}
+  .t-step::before{
+    content:""; position:absolute; top:-6px; left:0; width:15px; height:15px;
+    background:var(--ink); border-radius:50%; border:3px solid var(--paper); outline:3px solid var(--ink);
+  }
+  .t-step .n{font-family:"Roboto Mono",monospace; font-size:12px; color:var(--ink);}
+  .t-step h3{font-size:24px; margin-top:10px;}
+  .t-step p{margin-top:10px; color:var(--ink-soft); font-size:15px;}
+  @media (max-width:820px){ .timeline-row{grid-template-columns:1fr 1fr; row-gap:44px;} }
+  @media (max-width:520px){ .timeline-row{grid-template-columns:1fr;} .timeline::before{display:none;} }
+
+  /* ---------- CONTACT ---------- */
+  .contact{background:var(--ink); color:#fff;}
+  .contact h2{font-size:clamp(36px,6vw,72px); max-width:18ch; color:#fff;}
+  .contact p.lead{margin-top:22px; max-width:52ch; font-size:18px; color:rgba(255,255,255,.85);}
+  .contact-row{display:flex; align-items:center; gap:22px; margin-top:40px; flex-wrap:wrap;}
+  .contact .btn{border-color:#fff; color:#fff;}
+  .contact .btn:hover{background:#fff; color:var(--ink);}
+  .contact-note{margin-top:22px; font-family:"Roboto Mono",monospace; font-size:12.5px; color:rgba(255,255,255,.7);}
+
+  /* ---------- FOOTER ---------- */
+  footer{padding:30px 0;}
+  .foot-row{display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:14px;}
+  .foot-row p{font-family:"Roboto Mono",monospace; font-size:11.5px; color:var(--ink-soft);}
+  .foot-links{display:flex; gap:22px;}
+  .foot-links a{font-size:13px; text-decoration:none; color:var(--ink); font-weight:600;}
+  .foot-links a:hover{color:var(--ink);}
+
+  @media (prefers-reduced-motion:reduce){ html{scroll-behavior:auto;} *{transition:none !important;} }
+</style>
+
+<header class="nav">
+  <div class="nav-inner wrap">
+    <a class="brand" href="#top">webky<span>.</span>profesionál</a>
+    <nav class="navlinks">
+      <a href="#ukazky">Ukážky</a>
+      <a href="#redakcny-system">Redakčný systém</a>
+      <a href="#sluzby">Služby</a>
+      <a href="#ako-pracujeme">Postup</a>
+      <a class="btn btn-fill" href="#kontakt">Nezáväzná ponuka</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+
+  <section class="hero">
+    <div class="hero-top wrap">
+      <p class="mono" style="color:var(--ink); margin-bottom:20px;">Webová agentúra</p>
+      <h1>Moderné a profesionálne weby.</h1>
+      <p class="hero-sub">Navrhujeme a staviame moderné weby na mieru pre firmy a podnikateľov — žiadne šablóny, len riešenie prispôsobené vášmu biznisu, s kvalitnými fotografiami, rýchlym načítaním a jasnou cestou k objednávke či rezervácii.</p>
+      <div class="hero-ctas">
+        <a class="btn btn-fill" href="#ukazky">Pozrieť návrhy</a>
+        <a class="btn" href="#kontakt">Nezáväzná konzultácia</a>
+      </div>
+    </div>
+    <div class="hero-strip">
+      <a class="hero-thumb" href="https://villa-amara.vercel.app/" target="_blank" rel="noopener">
+        <img src="assets/amara-hero.jpg" alt="Návrh webu Villa Amara">
+        <div class="cap"><b>Villa Amara</b><span>Návrh ↗</span></div>
+      </a>
+      <a class="hero-thumb" href="https://penzion-pod-krivanom.vercel.app/" target="_blank" rel="noopener">
+        <img src="assets/krivan-hero.jpg" alt="Návrh webu penziónu Pod Kriváňom">
+        <div class="cap"><b>Pod Kriváňom</b><span>Návrh ↗</span></div>
+      </a>
+      <a class="hero-thumb" href="https://penzion-uboc.vercel.app/" target="_blank" rel="noopener">
+        <img src="assets/uboc-hero.jpg" alt="Návrh webu penziónu Úboč">
+        <div class="cap"><b>Úboč</b><span>Návrh ↗</span></div>
+      </a>
+    </div>
+  </section>
+
+  <section class="work" id="ukazky">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="mono">Ukážky nášho dizajnu</p>
+        <h2>Tri návrhy, ktoré ukazujú, čo dokážeme.</h2>
+        <p>Toto nie sú weby reálnych klientov — sú to naše vlastné návrhy, ktorými chceme ukázať náš prístup k dizajnu. Robíme weby pre penzióny a hotely, no rovnako aj pre firmy z akéhokoľvek iného odvetvia.</p>
+      </div>
+    </div>
+
+    <div class="work-item">
+      <div class="work-media">
+        <span class="num">01</span>
+        <img src="assets/amara-hero.jpg" alt="Návrh webu Villa Amara s leteckým záberom vily pri mori">
+      </div>
+      <div class="work-copy">
+        <p class="mono loc">Súkromná vila · Stredomorie</p>
+        <h3>Villa Amara</h3>
+        <span class="badge">Vlastný návrh</span>
+        <p class="desc">Čistý, minimalistický web pre luxusný prenájom vily. Úvodná stránka sa otvára videom vily, ďalej pokračuje veľkými fotografiami, jemnou typografiou a pokojným tempom — presne to, čo hosť pri výbere ubytovania v tejto cenovej kategórii očakáva.</p>
+        <div class="work-tags"><span>Úvodné video</span><span>Galéria izieb</span><span>Sekcia vybavenie</span><span>Vlastný redakčný systém</span></div>
+        <a class="link-arrow" href="https://villa-amara.vercel.app/" target="_blank" rel="noopener">Pozrieť návrh ↗</a>
+      </div>
+    </div>
+
+    <div class="work-item">
+      <div class="work-media">
+        <span class="num">02</span>
+        <img src="assets/krivan-hero.jpg" alt="Návrh webu penziónu Pod Kriváňom vo Vysokých Tatrách">
+      </div>
+      <div class="work-copy">
+        <p class="mono loc">Rodinný penzión · Podbanské, Vysoké Tatry</p>
+        <h3>Pod Kriváňom</h3>
+        <span class="badge">Vlastný návrh</span>
+        <p class="desc">Návrh pre rodinný penzión s tromi izbami, postavený na príbehu troch generácií jednej rodiny — s priestorom na fotky okolia, izieb a jasným tlačidlom na rezerváciu.</p>
+        <div class="work-tags"><span>SK / EN verzia</span><span>Tlačidlo Rezervovať</span><span>Príbeh penziónu</span></div>
+        <a class="link-arrow" href="https://penzion-pod-krivanom.vercel.app/" target="_blank" rel="noopener">Pozrieť návrh ↗</a>
+      </div>
+    </div>
+
+    <div class="work-item">
+      <div class="work-media">
+        <span class="num">03</span>
+        <img src="assets/uboc-hero.jpg" alt="Návrh webu penziónu Úboč vo Vysokých Tatrách">
+      </div>
+      <div class="work-copy">
+        <p class="mono loc">Penzión · Mlynčeky, Vysoké Tatry</p>
+        <h3>Úboč</h3>
+        <span class="badge">Vlastný návrh</span>
+        <p class="desc">Tmavý dizajn postavený okolo celoobrazovkovej fotografie penziónu pod Lomnickým štítom, s dôrazom na jednoduchú navigáciu a rýchly prístup k rezervácii.</p>
+        <div class="work-tags"><span>Celoobrazovková fotogaléria</span><span>Sekcia Okolie</span><span>Tlačidlo Rezervovať</span></div>
+        <a class="link-arrow" href="https://penzion-uboc.vercel.app/" target="_blank" rel="noopener">Pozrieť návrh ↗</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="cms" id="redakcny-system">
+    <div class="wrap">
+      <div class="cms-head">
+        <p class="mono">Ukážka na príklade villa amara</p>
+        <h2>Redakčný systém pre majiteľa, nie pre programátora.</h2>
+        <p>Majiteľ sa prihlási heslom do súkromnej administrácie a sám si upraví texty, popisy izieb aj fotky v galérii — bez volania programátorovi a bez čakania na úpravu. Tento redakčný systém nie je len pre Villa Amara — ponúkame ho ku webu <a href="#sluzby" class="tier-standard" style="font-weight:600; text-decoration:none;">Standard</a> a <a href="#sluzby" class="tier-exclusive" style="font-weight:600; text-decoration:none;">Exclusive</a>.</p>
+      </div>
+      <div class="cms-steps">
+        <div class="cms-step">
+          <p class="num">01</p>
+          <p class="label">Prihlásenie heslom</p>
+          <img src="assets/amara-login.jpg" alt="Prihlasovacia obrazovka administrácie webu Villa Amara">
+        </div>
+        <div class="cms-step">
+          <p class="num">02</p>
+          <p class="label">Úprava textov</p>
+          <img src="assets/amara-admin-1.jpg" alt="Formulár na úpravu textov o vile v administrácii">
+        </div>
+        <div class="cms-step">
+          <p class="num">03</p>
+          <p class="label">Správa galérie</p>
+          <img src="assets/amara-admin-2.jpg" alt="Správa fotografií v galérii v administrácii webu">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="services" id="sluzby">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="mono">Služby</p>
+        <h2>Tri webové dizajny, jeden pre vás.</h2>
+        <p>Ponúkame tri webové dizajny. Rozsah vždy prispôsobíme veľkosti a potrebám vášho biznisu.</p>
+      </div>
+      <div class="services-grid services-grid-3">
+        <div class="plan">
+          <p class="mono tier-name tier-basic">Basic</p>
+          <h3>198 <span class="eur">€</span></h3>
+          <ul>
+            <li>Jednoduchý moderný web</li>
+            <li>Základné info</li>
+            <li>Fotky a okolie</li>
+          </ul>
+          <a class="btn" href="#kontakt">Mám záujem</a>
+        </div>
+        <div class="plan filled">
+          <p class="mono tier-name tier-standard">Standard</p>
+          <h3>289 <span class="eur">€</span></h3>
+          <ul>
+            <li>Moderný dizajn na mieru</li>
+            <li>SK/EN verzia</li>
+            <li>Fotky</li>
+            <li>Všetky potrebné info</li>
+            <li>Videoanimácie</li>
+            <li>Redakčný systém</li>
+          </ul>
+          <a class="btn" href="#kontakt">Mám záujem</a>
+        </div>
+        <div class="plan">
+          <p class="mono tier-name tier-exclusive">Exclusive</p>
+          <h3>419 <span class="eur">€</span></h3>
+          <ul>
+            <li>Prepracovaný moderný web na mieru</li>
+            <li>SK/EN verzia</li>
+            <li>Recenzie</li>
+            <li>Rezervačný systém</li>
+            <li>Mapa</li>
+            <li>Dostupnosť</li>
+            <li>Doména na prvý rok zadarmo</li>
+            <li>Redakčný systém</li>
+          </ul>
+          <a class="btn" href="#kontakt">Mám záujem</a>
+        </div>
+      </div>
+      <div class="addon">
+        <div><b>Redakčný systém ako doplnok</b><br><span>Rovnaký systém ako pri Villa Amara vieme pridať aj k existujúcemu webu.</span></div>
+        <a class="link-arrow" href="#kontakt">Opýtať sa ↗</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="process" id="ako-pracujeme">
+    <div class="wrap">
+      <div class="section-head" style="margin-bottom:0;">
+        <p class="mono">Ako pracujeme</p>
+        <h2>Od prvého rozhovoru po spustený web.</h2>
+      </div>
+      <div class="timeline">
+        <div class="timeline-row">
+          <div class="t-step"><p class="n">01</p><h3>Konzultácia</h3><p>Spoznáme váš biznis, zákazníkov aj to, čo má web dosiahnuť.</p></div>
+          <div class="t-step"><p class="n">02</p><h3>Návrh</h3><p>Pripravíme dizajn na mieru — nie preddefinovanú šablónu.</p></div>
+          <div class="t-step"><p class="n">03</p><h3>Vývoj</h3><p>Postavíme web, pomôžeme s výberom fotiek aj úpravou textov.</p></div>
+          <div class="t-step"><p class="n">04</p><h3>Spustenie</h3><p>Web ide naživo, zaškolíme vás v redakčnom systéme a sme na spojení.</p></div>
+        </div>
+      </div>
+      <div class="addon" style="border-top:3px solid var(--ink); margin-top:60px;">
+        <div><b>Návrh webu robíme zadarmo</b><br><span>Návrh webu vám pripravíme bezplatne. Až po konzultácii s vami a vašom súhlase ho spracujeme do finálnej, hotovej podoby.</span></div>
+        <a class="link-arrow" href="#kontakt">Napísať nám ↗</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact" id="kontakt">
+    <div class="wrap">
+      <h2>Poďme spraviť web, na ktorý sa hostia radi vrátia.</h2>
+      <p class="lead">Napíšte nám potrebné informácie o vašom biznise s fotkami a výber cenovej ponuky — pozrieme sa na to a vytvoríme návrh.</p>
+      <div class="contact-row">
+        <a class="btn" href="mailto:webky.profesional@gmail.com?subject=Dopyt%20na%20web">Napísať na webky.profesional@gmail.com</a>
+      </div>
+      <p class="contact-note">Zvyčajne odpovieme do 24 hodín.</p>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap foot-row">
+    <p>© 2026 WEBKY PROFESIONÁL — MODERNÉ A PROFESIONÁLNE WEBY</p>
+    <div class="foot-links">
+      <a href="#ukazky">Ukážky</a>
+      <a href="#sluzby">Služby</a>
+      <a href="#kontakt">Kontakt</a>
+    </div>
+  </div>
+</footer>
