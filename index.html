@@ -250,6 +250,15 @@
   @media (max-width:820px){ .timeline-row{grid-template-columns:1fr 1fr; row-gap:44px;} }
   @media (max-width:520px){ .timeline-row{grid-template-columns:1fr;} .timeline::before{display:none;} }
 
+  /* ---------- ABOUT ---------- */
+  .about{border-bottom:3px solid var(--ink);}
+  .about .section-head p{max-width:62ch;}
+  .about-facts{margin-top:56px; display:grid; grid-template-columns:repeat(3,1fr); border-top:3px solid var(--ink); border-left:3px solid var(--ink);}
+  .about-fact{border-right:3px solid var(--ink); border-bottom:3px solid var(--ink); padding:28px 24px; background:var(--surface);}
+  .about-fact .mono{color:var(--ink);}
+  .about-fact .value{font-family:"Bodoni Moda",serif; font-style:italic; font-weight:600; font-size:23px; margin-top:10px;}
+  @media (max-width:820px){ .about-facts{grid-template-columns:1fr;} }
+
   /* ---------- CONTACT ---------- */
   .contact{background:var(--ink); color:#fff;}
   .contact h2{font-size:clamp(36px,6vw,72px); max-width:18ch; color:#fff;}
@@ -304,6 +313,7 @@
       <a href="#redakcny-system">Redakčný systém</a>
       <a href="#sluzby">Služby</a>
       <a href="#ako-pracujeme">Postup</a>
+      <a href="#o-nas">O nás</a>
       <a class="btn btn-fill" href="#kontakt">Nezáväzná ponuka</a>
     </nav>
   </div>
@@ -491,6 +501,21 @@
     </div>
   </section>
 
+  <section class="about" id="o-nas">
+    <div class="wrap">
+      <div class="section-head" style="margin-bottom:0;">
+        <p class="mono">O nás</p>
+        <h2>Nová agentúra, poctivá práca.</h2>
+        <p>Webky Profesionál sme spustili nedávno — no za každým webom, ktorý postavíme, stojí rovnaká pozornosť k detailu, akú vidíte v ukážkach vyššie. Sme malý tím, takže sa každému projektu venujeme osobne, bez odovzdávania medzi oddeleniami a bez zbytočných prieťahov. Práve preto, že sme na začiatku, si vážime každého klienta — a chceme, aby bol váš prvý dojem presne taký dobrý, ako sme sľúbili.</p>
+      </div>
+      <div class="about-facts">
+        <div class="about-fact"><p class="mono">Založené</p><p class="value">2026</p></div>
+        <div class="about-fact"><p class="mono">Tím</p><p class="value">Osobný, bez sprostredkovateľov</p></div>
+        <div class="about-fact"><p class="mono">Prístup</p><p class="value">Návrh na mieru, žiadne šablóny</p></div>
+      </div>
+    </div>
+  </section>
+
   <section class="contact" id="kontakt">
     <div class="wrap">
       <h2>Poďme spraviť web, na ktorý sa hostia radi vrátia.</h2>
@@ -510,6 +535,7 @@
     <div class="foot-links">
       <a href="#ukazky">Ukážky</a>
       <a href="#sluzby">Služby</a>
+      <a href="#o-nas">O nás</a>
       <a href="#kontakt">Kontakt</a>
     </div>
   </div>
