@@ -217,9 +217,10 @@
   .plan.filled .mono{color:var(--paper);}
   .plan.filled h3{color:var(--paper);}
   .plan h3{font-size:32px; margin-top:12px;}
+  .plan h3 .plus-domain{font-family:"Roboto Mono",monospace; font-style:normal; font-weight:500; font-size:14px; letter-spacing:.04em; text-transform:uppercase; opacity:.7; white-space:nowrap;}
   .plan h3 .eur{font-family:"Jost", sans-serif; font-style:normal; font-weight:600;}
   .plan .price{font-family:"Roboto Mono",monospace; font-size:13px; margin-top:10px; text-transform:uppercase; letter-spacing:.05em; opacity:.75;}
-  .plan ul{list-style:none; margin:28px 0 0; padding:0; display:grid; gap:13px; flex:1;}
+  .plan ul{list-style:none; margin:28px 0 0; padding:0; display:grid; gap:13px; flex:1; align-content:start;}
   .plan li{font-size:15.5px; display:flex; gap:10px;}
   .plan li::before{content:"+"; font-weight:700; color:var(--ink); flex:none;}
   .plan.filled li::before{color:var(--paper);}
@@ -439,7 +440,7 @@
       <div class="services-grid services-grid-3">
         <div class="plan">
           <p class="mono tier-name tier-basic">Basic</p>
-          <h3>198 <span class="eur">€</span></h3>
+          <h3>198 <span class="eur">€</span> <span class="plus-domain">+ doména</span></h3>
           <ul>
             <li>Jednoduchý moderný web</li>
             <li>Základné info</li>
@@ -449,7 +450,7 @@
         </div>
         <div class="plan filled">
           <p class="mono tier-name tier-standard">Standard</p>
-          <h3>289 <span class="eur">€</span></h3>
+          <h3>289 <span class="eur">€</span> <span class="plus-domain">+ doména</span></h3>
           <ul>
             <li>Moderný dizajn na mieru</li>
             <li>SK/EN verzia</li>
@@ -462,7 +463,7 @@
         </div>
         <div class="plan">
           <p class="mono tier-name tier-exclusive">Exclusive</p>
-          <h3>419 <span class="eur">€</span></h3>
+          <h3>419 <span class="eur">€</span> <span class="plus-domain">+ doména</span></h3>
           <ul>
             <li>Prepracovaný moderný web na mieru</li>
             <li>SK/EN verzia</li>
@@ -470,7 +471,6 @@
             <li>Rezervačný systém*</li>
             <li>Mapa</li>
             <li>Dostupnosť</li>
-            <li>Doména na prvý rok zadarmo</li>
             <li>Redakčný systém</li>
           </ul>
           <a class="btn" href="#kontakt">Mám záujem</a>
